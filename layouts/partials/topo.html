@@ -1,0 +1,14 @@
+<div class="topo-barra">
+  <div class="miolo topo">
+    <a class="marca" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+    <nav class="nav" aria-label="Seções">
+      {{- range .Site.Menus.main }}
+      <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+      {{- end }}
+      <button type="button" class="tema" id="botao-tema" aria-label="Alternar entre modo claro e escuro">
+        <span class="quando-claro">Escuro</span>
+        <span class="quando-escuro">Claro</span>
+      </button>
+    </nav>
+  </div>
+</div>

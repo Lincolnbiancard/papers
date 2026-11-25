@@ -1,0 +1,15 @@
+{{- define "main" }}
+<header class="apresentacao">
+  <h1>{{ .Title }}</h1>
+  {{- with .Content }}<div class="lead">{{ . }}</div>{{ end }}
+</header>
+{{- $pager := .Paginate .RegularPagesRecursive }}
+{{- partial "lista.html" $pager }}
+{{- if gt $pager.TotalPages 1 }}
+<nav class="paginacao" aria-label="Páginas">
+  {{- if $pager.HasPrev }}<a href="{{ $pager.Prev.URL }}">Anterior</a>{{ end }}
+  <span>{{ $pager.PageNumber }} de {{ $pager.TotalPages }}</span>
+  {{- if $pager.HasNext }}<a href="{{ $pager.Next.URL }}">Próxima</a>{{ end }}
+</nav>
+{{- end }}
+{{- end }}

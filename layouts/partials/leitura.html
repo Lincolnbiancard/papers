@@ -1,0 +1,2 @@
+{{- $n := .ReadingTime -}}
+{{- if le $n 1 }}1 min de leitura{{ else }}{{ $n }} min de leitura{{ end -}}

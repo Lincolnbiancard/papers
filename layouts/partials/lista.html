@@ -1,0 +1,14 @@
+{{- if not .Pages }}
+<p class="vazio">Nenhum paper publicado ainda.</p>
+{{- else }}
+<ul class="lista">
+  {{- range .Pages }}
+  <li>
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{- with .Summary }}<p class="resumo">{{ . }}</p>{{ end }}
+    <p class="leitura">{{ partial "leitura.html" . }}</p>
+  </li>
+  {{- end }}
+</ul>
+{{- end }}
