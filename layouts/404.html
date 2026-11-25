@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale }}">
+{{- partial "head.html" . }}
+<body>
+  {{- partial "topo.html" . }}
+  <main id="conteudo-principal" class="miolo">
+    <article class="post">
+      <header class="post-cabeca">
+        <h1>Página não encontrada</h1>
+      </header>
+      <div class="conteudo">
+        <p>Esse endereço não tem um paper.</p>
+        <p><a href="{{ "/" | relURL }}">Voltar para a lista</a></p>
+      </div>
+    </article>
+  </main>
+  {{- partial "rodape.html" . }}
+  {{- partial "tema-fim.html" . }}
+</body>
+</html>

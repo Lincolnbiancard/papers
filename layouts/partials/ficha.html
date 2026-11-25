@@ -1,0 +1,17 @@
+{{- with .Params.paper -}}
+<aside class="ficha">
+  <p class="aviso">Tradução não oficial para o português, feita pela BianCode para estudo. Original: <a href="{{ .original_url }}">{{ .original_url }}</a></p>
+  <dl>
+    {{- with .original_title }}<div><dt>Título original</dt><dd>{{ . }}</dd></div>{{- end }}
+    {{- with .authors }}<div><dt>Autores</dt><dd>{{ . }}</dd></div>{{- end }}
+    {{- with .institution }}<div><dt>Instituição</dt><dd>{{ . }}</dd></div>{{- end }}
+    {{- with .published }}<div><dt>Data</dt><dd>{{ . }}</dd></div>{{- end }}
+    {{- with .kind }}<div><dt>Tipo</dt><dd>{{ . }}</dd></div>{{- end }}
+  </dl>
+  {{- with .pdf -}}
+    {{- with $.Resources.Get . -}}
+    <p class="pdf"><a href="{{ .RelPermalink }}">Baixar o PDF desta tradução</a></p>
+    {{- end -}}
+  {{- end }}
+</aside>
+{{- end }}

@@ -1,0 +1,22 @@
+{{- define "main" }}
+{{- range .Resources }}{{ $publicado := .RelPermalink }}{{ end }}
+<article class="post">
+  <header class="post-cabeca">
+    <h1>{{ .Title }}</h1>
+    {{- if eq .Section "posts" }}
+    <p class="meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "data.html" .Date }}</time>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>{{ partial "leitura.html" . }}</span>
+      <span class="sep" aria-hidden="true">|</span>
+      <span>{{ with .Params.author }}{{ . }}{{ else }}{{ $.Site.Params.author }}{{ end }}</span>
+    </p>
+    {{- end }}
+  </header>
+  {{- if eq .Section "posts" }}{{ partial "ficha.html" . }}{{ end }}
+  {{- partial "toc.html" . }}
+  <div class="conteudo">
+    {{ .Content }}
+  </div>
+</article>
+{{- end }}

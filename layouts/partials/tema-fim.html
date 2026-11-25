@@ -1,0 +1,11 @@
+<script>
+  (function () {
+    var botao = document.getElementById("botao-tema");
+    if (!botao) return;
+    botao.addEventListener("click", function () {
+      var atual = document.documentElement.getAttribute("data-tema") === "escuro" ? "claro" : "escuro";
+      document.documentElement.setAttribute("data-tema", atual);
+      try { localStorage.setItem("papers-tema", atual); } catch (e) {}
+    });
+  })();
+</script>

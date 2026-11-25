@@ -1,0 +1,14 @@
+<footer class="rodape">
+  <div class="miolo">
+    <p>Papers para o dono. Traduções da BianCode para estudo.</p>
+    <p>
+      <a href="{{ "sobre/" | relURL }}">Sobre</a>
+      <span aria-hidden="true"> · </span>
+      <a href="https://contato.biancode.com.br">Contato</a>
+      {{- with .Site.Home.OutputFormats.Get "rss" }}
+      <span aria-hidden="true"> · </span>
+      <a href="{{ .RelPermalink }}">Feed</a>
+      {{- end }}
+    </p>
+  </div>
+</footer>

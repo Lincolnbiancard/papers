@@ -1,0 +1,28 @@
+{{- $matches := findRESubmatch `(?s)<h([23]) id="([^"]+)"[^>]*>(.*?)</h[23]>` .Content -}}
+{{- if $matches }}
+<nav class="toc" aria-label="Sumário">
+  <details open>
+    <summary>Sumário</summary>
+    <ul>
+      {{- $open := false -}}
+      {{- $sub := false -}}
+      {{- range $matches -}}
+        {{- $level := index . 1 -}}
+        {{- $id := index . 2 -}}
+        {{- $text := trim (replaceRE `<[^>]+>` "" (index . 3) | htmlUnescape) " \n\r\t" -}}
+        {{- if eq $level "2" -}}
+          {{- if $sub }}</ul>{{ $sub = false }}{{ end -}}
+          {{- if $open }}</li>{{ end -}}
+          <li><a href="#{{ $id }}">{{ $text }}</a>
+          {{- $open = true -}}
+        {{- else -}}
+          {{- if not $sub }}<ul>{{ $sub = true }}{{ end -}}
+          <li><a href="#{{ $id }}">{{ $text }}</a></li>
+        {{- end -}}
+      {{- end -}}
+      {{- if $sub }}</ul>{{ end -}}
+      {{- if $open }}</li>{{ end -}}
+    </ul>
+  </details>
+</nav>
+{{- end }}

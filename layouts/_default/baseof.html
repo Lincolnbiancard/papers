@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale }}">
+{{- partial "head.html" . }}
+<body>
+  <a class="pular" href="#conteudo-principal">Ir para o conteúdo</a>
+  {{- partial "topo.html" . }}
+  <main id="conteudo-principal" class="miolo">
+    {{- block "main" . }}{{- end }}
+  </main>
+  {{- partial "rodape.html" . }}
+  {{- partial "tema-fim.html" . }}
+</body>
+</html>
